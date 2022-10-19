@@ -9,8 +9,25 @@ const Home: NextPage = () => {
   const generateLog = () => {
     const logText = `Here is a log generated at => ${new Date()}`;
     const tempArray = [...logs, logText];
+
     console.log(logText);
+
     setLogs(tempArray);
+
+    fetch("/api/log", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ log: logText }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
