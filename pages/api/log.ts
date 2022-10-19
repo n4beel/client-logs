@@ -11,7 +11,7 @@ export default function handler(
 ) {
   if (req.method === "POST") {
     // Process a POST request
-    console.log(req.body.log);
+    console.log(req.body);
     res.status(200).json({ message: "logged successsfully" });
   } else {
     // Handle any other HTTP method
